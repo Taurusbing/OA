@@ -85,10 +85,10 @@
 				<th lay-data="{field:'name', width:100}">问题标题</th>
 				<th lay-data="{field:'content', width:160, sort: true}">问题内容</th>
 				<th lay-data="{field:'que_date', width:160}">问题发布时间</th>
-				<th lay-data="{field:'student_id', width:100}">提问学生</th>
+				<th lay-data="{field:'studentName', width:100}">提问学生</th>
 				<th lay-data="{field:'is_finish', width:100}">解答状态</th>
 				<th lay-data="{field:'answer', width:160}">问题答案</th>
-				<th lay-data="{field:'admin_id', width:100, sort: true}">解答人</th>
+				<th lay-data="{field:'adminName', width:100, sort: true}">解答人</th>
 				<th
 					lay-data="{fixed: 'right', width:200, align:'center', toolbar: '#barDemo'}"></th>
 			</tr>
@@ -177,7 +177,7 @@
 								var body = layui.layer.getChildFrame('body',index);
 								setTimeout(
 										function() {
-											 $(".p1").text(data.student_id);
+											 $(".p1").text(data.studentName);
 											 $(".p4").text(data.que_date);
 											 $(".p2").text(data.name);
 											 $(".p3").text(data.content);

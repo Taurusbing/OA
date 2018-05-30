@@ -5,6 +5,22 @@
 <mapper namespace="com.hpeu.oa.dao.ProblemDao">
     
     <select id="getAll" resultType="com.hpeu.oa.entity.Problem">
-    	select * from problem
+    	SELECT
+		   p.id,
+		   p.name,
+		   p.content,
+		   p.que_date,
+		   p.is_finish,
+		   p.answer,
+		   s.sname studentName,
+		   a.adminName
+		FROM
+		   problem p,
+		   student s,
+		   admin a
+		WHERE
+		   p.student_id = s.id
+		and
+		   p.admin_id = a.id
     </select>
 </mapper>

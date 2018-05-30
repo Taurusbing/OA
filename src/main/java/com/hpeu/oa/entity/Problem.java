@@ -11,6 +11,8 @@ public class Problem {
 	private int admin_id;
 	private int student_id;
 	private int is_finish;
+	private String studentName;
+	private String adminName;
 	public int getId() {
 		return id;
 	}
@@ -59,10 +61,24 @@ public class Problem {
 	public void setIs_finish(int is_finish) {
 		this.is_finish = is_finish;
 	}
+	
+	public String getStudentName() {
+		return studentName;
+	}
+	public void setStudentName(String studentName) {
+		this.studentName = studentName;
+	}
+	public String getAdminName() {
+		return adminName;
+	}
+	public void setAdminName(String adminName) {
+		this.adminName = adminName;
+	}
 	@Override
 	public String toString() {
 		return "Problem [id=" + id + ", name=" + name + ", content=" + content + ", answer=" + answer + ", que_date="
-				+ que_date + ", admin_id=" + admin_id + ", student_id=" + student_id + ", is_finish=" + is_finish + "]";
+				+ que_date + ", admin_id=" + admin_id + ", student_id=" + student_id + ", is_finish=" + is_finish
+				+ ", studentName=" + studentName + ", adminName=" + adminName + "]";
 	}
 	
 }
