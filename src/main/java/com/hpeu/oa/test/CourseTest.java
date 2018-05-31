@@ -62,4 +62,10 @@ public class CourseTest {
 			System.out.println(it.next());
 		}
 	}
+	
+	@Test 
+	public void delete() {
+		courseDao.delete(4);
+		System.out.println("删除");
+	}
 }

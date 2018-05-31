@@ -11,4 +11,5 @@ public interface CourseDao extends BaseDao1<Course>{
 	Course findOne(String name);
 	Timestamp findTime(String name);
 	List<Course> getAll();
+	void delete(int id);
 }

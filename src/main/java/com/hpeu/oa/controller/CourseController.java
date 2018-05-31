@@ -45,22 +45,34 @@ public class CourseController {
 	@Autowired
 	private CourseService courseService;
 	
+	/**
+	 *跳转到home.jsp主页面
+	 */
 	@RequestMapping(value="home",method=RequestMethod.GET)
 	public String goHome() {
 		return "home";
 	}
 	
+	/**
+	 *跳转到课程推送页面
+	 */
 	@RequestMapping(value="add",method=RequestMethod.GET)
 	public String goAdd() {
 		return "courseAdd";
 	}
 	
+	
+	/**
+	 *跳转到课程展示页面showdata.jsp
+	 */
 	@RequestMapping(value="showdata",method=RequestMethod.GET)
 	public String goData() {
 		return "showdata";
 	}
+	
+	
     /**  
-     * 文件上传功能    
+     * 文件上传功能,上传后将文件名存入session中
      */  
     @RequestMapping(value="/upload",method=RequestMethod.POST)  
     @ResponseBody  
@@ -69,30 +81,44 @@ public class CourseController {
     	file.transferTo(new File("D:\\upload\\"+file.getOriginalFilename()));
     }  
     
-    @RequestMapping(value="/putCourse",method=RequestMethod.GET)
+    
+    
+    /**
+     * 课程上传功能
+     */
+    @RequestMapping(value="/putCourse",method=RequestMethod.POST)
     @ResponseBody
     public void course(Course course,HttpServletRequest request,HttpServletResponse response){  
-	    String filename = (String) request.getSession().getAttribute("sefile");
-	    System.out.println(filename);
+    	//获取session中存储的文件名
+    	String filename = (String) request.getSession().getAttribute("sefile");
     	
 	    //推送时间
 		Date date = new Date();
 		String nowTime = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss").format(date);
 		Timestamp time = Timestamp.valueOf(nowTime);
 		course.setPutDate(time);
+		
+		//添加课程到course表中
 		courseService.add(course);
 		
 		//获取课程id
         int courseId = courseService.findId(course.getCourseName());
 		
+        //将文件资源，地址存入到resource表中
     	Resoure resoure = new Resoure();
     	resoure.setName(filename);
     	resoure.setUrl("D:\\upload\\"+filename);
     	resoure.setCourseId(courseId);
     	ResourceService.add(resoure);
+    	
     	System.out.println("推送成功");
+
     }
     
+    /**
+     * 将课程列表传给前台展示
+     * 用于返回的数据字符处理produces = "application/json;charset=utf-8"
+     */
 	@RequestMapping(value="/show",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
 	@ResponseBody
 	public String show() {
@@ -106,5 +132,14 @@ public class CourseController {
 		JSONObject jsonObject = JSONObject.fromObject(map);
 		System.out.println(jsonObject.toString());
 		return jsonObject.toString();
+	}
+	
+	/**
+	 * 删除课程
+	 */
+	@RequestMapping(value="/coursedel",method=RequestMethod.POST)
+	public void delete(int cid) {
+		courseService.delete(cid);
+		System.out.println("删除成功");
 	}
 }

@@ -50,7 +50,7 @@
                                 <a href="javascript:;" data-url="showpro" data-icon="&#xe614;" data-title="学生疑问" kit-target data-id='4'><i class="layui-icon">&#xe614;</i><span> 学生疑问</span></a>
                             </dd>
                             <dd>
-                                <a href="javascript:;" kit-target data-options="{url:'https://www.baidu.com',icon:'&#xe658;',title:'百度一下',id:'5'}"><i class="layui-icon">&#xe658;</i><span> 百度一下</span></a>
+                                <a href="javascript:;" data-url="score" data-icon="&#xe614;" data-title="学生成绩" kit-target data-id='5'"><i class="layui-icon">&#xe658;</i><span> 学生成绩</span></a>
                             </dd>
                         </dl>
                     </li>

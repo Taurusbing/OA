@@ -68,7 +68,8 @@
 				courseName : $("#courseName").val(),
 				coment : $("#coment").val()
 			}
-			$.get("putCourse",json,function(d){
+				
+			$.post("putCourse",json,function(ddd){
 				layer.msg('课程发布成功', {time: 5000, icon:6});
 			})
 		})

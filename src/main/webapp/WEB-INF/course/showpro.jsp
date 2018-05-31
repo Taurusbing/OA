@@ -45,7 +45,8 @@
 				<p class="p3"></p>
 			</div>
 			
-			<form>
+			<form action="write" method="get">
+				<input type="hidden" name="proId" id="inp" value="">
 				<div class="layui-form-item layui-form-text">
 					<label class="layui-form-label" style="font-size: 20px; color: #00b386;">解答</label>
 					<div class="layui-input-block" style="margin-right: 50px;">
@@ -54,7 +55,7 @@
 				</div>
 				<div class="layui-form-item">
 					<div class="layui-input-block">
-						<button class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
+						<button id="area" class="layui-btn" lay-submit="" lay-filter="demo1">立即提交</button>
 						<button type="reset" class="layui-btn layui-btn-primary">重置</button>
 					</div>
 				</div>
@@ -86,7 +87,7 @@
 				<th lay-data="{field:'content', width:160, sort: true}">问题内容</th>
 				<th lay-data="{field:'que_date', width:160}">问题发布时间</th>
 				<th lay-data="{field:'studentName', width:100}">提问学生</th>
-				<th lay-data="{field:'is_finish', width:100}">解答状态</th>
+				<th lay-data="{field:'is_finish', width:100,templet: '#is_finish'}">解答状态</th>
 				<th lay-data="{field:'answer', width:160}">问题答案</th>
 				<th lay-data="{field:'adminName', width:100, sort: true}">解答人</th>
 				<th
@@ -94,17 +95,32 @@
 			</tr>
 		</thead>
 	</table>
-
+	
+	<script type="text/html" id="is_finish">
+		{{#  if(d.is_finish=== 1){ }}
+    		已解答
+  		{{#  } }} 
+		{{#  if(d.is_finish=== 0){ }}
+    		<b style="color:red">未解答</b>
+  		{{#  } }} 
+	</script>
+	
 	<script type="text/html" id="barDemo">
-  <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
-  <a class="layui-btn layui-btn-xs" lay-event="edit">解答</a>
-  <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
-</script>
+  		<a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+		{{#  if(d.is_finish=== 1){ }}
+    		<a class="layui-btn layui-btn-xs layui-btn-disabled">解答</a>
+  		{{#  } }} 
+		{{#  if(d.is_finish=== 0){ }}
+    		<a class="layui-btn layui-btn-xs" lay-event="edit">解答</a>
+  		{{#  } }} 
+  		<a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+	</script>
 
-
+	<script src="../js/jquery-3.3.1.min.js" charset="utf-8"></script>
 	<script src="../layui/layui.js" charset="utf-8"></script>
 	<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 	<script>
+    console.log($(".ans")[0])
 		layui.use([ 'form', 'layer', 'layedit','laydate', 'table', 'laytpl' ],
 				function() {
 			var form = layui.form, layedit = layui.layedit,layer = parent.layer === undefined ? layui.layer
@@ -142,16 +158,25 @@
 	        });
 
 	        //监听提交
-	        form.on('submit(demo1)', function(data) {
-	            layer.alert(JSON.stringify(data.field), {
+/* 	        form.on('submit(demo1)', function(obj) {
+	        	alert(obj.data);
+	            layer.alert(JSON.stringify(data), {
 	                title: '最终的提交信息'
 	            })
 	            return false;
-	        });
+	        });  */
+			
+			$("#area").click(function(){
+				$("form").submit();
+				
+			})
+			$("form").submit(function(e){
+				return true;
+			})
 			//监听表格复选框选择
 			table.on('checkbox(demo)', function(obj) {
 				console.log(obj)
-			});
+			}); 
 			//监听工具条
 			table.on('tool(demo)', function(obj) {
 				var data = obj.data;
@@ -159,6 +184,9 @@
 					layer.msg('ID：' + data.id + ' 的查看操作');
 				} else if (obj.event === 'del') {
 					layer.confirm('真的删除行么', function(index) {
+						$.post('prodel',{"id":data.id},function(d){
+				        	  
+				         })
 						obj.del();
 						layer.close(index);
 					});
@@ -181,6 +209,7 @@
 											 $(".p4").text(data.que_date);
 											 $(".p2").text(data.name);
 											 $(".p3").text(data.content);
+											 $("#inp").attr("value",data.id)
 											layui.layer.tips(
 															'点击此处返回问题列表',
 															'.layui-layer-setwin .layui-layer-close',

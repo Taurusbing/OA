@@ -31,4 +31,8 @@
 		   c.admin_id = a.id
 		AND c.id = r.course_id
     </select>
+    <delete id="delete">
+    	delete from course where id=#{id}
+    </delete>
+
 </mapper>

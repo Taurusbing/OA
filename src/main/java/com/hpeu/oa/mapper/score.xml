@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.hpeu.oa.dao.ScoreDao">
+    
+    <select id="getAll" resultType="com.hpeu.oa.entity.Score">
+    	SELECT
+    	   s.id,
+		   s.sname as userName,
+		   c.one,
+		   c.two,
+		   c.three
+		FROM
+		   student s,
+		   score c
+		WHERE
+		   s.id = c.sid
+    </select>
+    
+    <select id="select" parameterType="int" resultType="com.hpeu.oa.entity.Score">
+    	select sid as id,one,two,three from score where sid = #{id}
+    </select>
+    
+    <update id="update">
+    	update score set one = #{one} , two = #{two} , three = #{three} 
+    	where sid = #{id}
+    </update>
+</mapper>

@@ -19,9 +19,8 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public void delete(Course entity) {
-		// TODO Auto-generated method stub
-		
+	public void delete(int id) {
+		CourseDao.delete(id);
 	}
 
 	@Override

@@ -7,10 +7,10 @@ public class Problem {
 	private String name;
 	private String content;
 	private String answer;
-	private Timestamp que_date;
-	private int admin_id;
-	private int student_id;
-	private int is_finish;
+	private Timestamp queDate;
+	private int adminId;
+	private int studentId;
+	private int isFinish;
 	private String studentName;
 	private String adminName;
 	public int getId() {
@@ -38,28 +38,28 @@ public class Problem {
 		this.answer = answer;
 	}
 	public String getQue_date() {
-		return que_date.toString();
+		return queDate.toString();
 	}
-	public void setQue_date(Timestamp que_date) {
-		this.que_date = que_date;
+	public void setQue_date(Timestamp queDate) {
+		this.queDate = queDate;
 	}
 	public int getAdmin_id() {
-		return admin_id;
+		return adminId;
 	}
-	public void setAdmin_id(int admin_id) {
-		this.admin_id = admin_id;
+	public void setAdmin_id(int adminId) {
+		this.adminId = adminId;
 	}
 	public int getStudent_id() {
-		return student_id;
+		return studentId;
 	}
-	public void setStudent_id(int student_id) {
-		this.student_id = student_id;
+	public void setStudent_id(int studentId) {
+		this.studentId = studentId;
 	}
 	public int getIs_finish() {
-		return is_finish;
+		return isFinish;
 	}
-	public void setIs_finish(int is_finish) {
-		this.is_finish = is_finish;
+	public void setIs_finish(int isFinish) {
+		this.isFinish = isFinish;
 	}
 	
 	public String getStudentName() {
@@ -77,7 +77,7 @@ public class Problem {
 	@Override
 	public String toString() {
 		return "Problem [id=" + id + ", name=" + name + ", content=" + content + ", answer=" + answer + ", que_date="
-				+ que_date + ", admin_id=" + admin_id + ", student_id=" + student_id + ", is_finish=" + is_finish
+				+ queDate + ", admin_id=" + adminId + ", student_id=" + studentId + ", is_finish=" + isFinish
 				+ ", studentName=" + studentName + ", adminName=" + adminName + "]";
 	}
 	

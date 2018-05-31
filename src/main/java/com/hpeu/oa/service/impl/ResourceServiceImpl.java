@@ -18,7 +18,7 @@ public class ResourceServiceImpl implements ResourceService{
 		resouceDao.add(entity);
 	}
 
-	public void delete(Resoure entity) {
+	public void delete(int id) {
 		
 	}
 

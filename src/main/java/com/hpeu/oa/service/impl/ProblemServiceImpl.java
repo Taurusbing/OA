@@ -19,18 +19,18 @@ public class ProblemServiceImpl implements ProblemService{
 	}
 
 	@Override
-	public void delete(Problem entity) {
-		
+	public void delete(int id) {
+		problemDao.delete(id);
 	}
 
 	@Override
 	public void update(Problem entity) {
-		
+		problemDao.update(entity);
 	}
 
 	@Override
 	public Problem select(int id) {
-		return null;
+		return problemDao.getOne(id);
 	}
 
 	@Override

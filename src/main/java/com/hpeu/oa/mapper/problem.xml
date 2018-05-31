@@ -9,8 +9,8 @@
 		   p.id,
 		   p.name,
 		   p.content,
-		   p.que_date,
-		   p.is_finish,
+		   p.que_date as queDate,
+		   p.is_finish as isFinish,
 		   p.answer,
 		   s.sname studentName,
 		   a.adminName
@@ -22,5 +22,37 @@
 		   p.student_id = s.id
 		and
 		   p.admin_id = a.id
+		ORDER BY is_finish ASC
     </select>
+    
+    <select id="getOne" parameterType="int" resultType="com.hpeu.oa.entity.Problem">
+    	SELECT
+		   p.id,
+		   p.name,
+		   p.content,
+		   p.que_date as queDate,
+		   p.is_finish as isFinish,
+		   p.answer,
+		   s.sname studentName,
+		   a.adminName
+		FROM
+		   problem p,
+		   student s,
+		   admin a
+		WHERE
+		   p.student_id = s.id
+		and
+		   p.admin_id = a.id
+		and
+		   p.id = #{id}
+    </select>
+    
+    <delete id="delete">
+    	delete from problem where id = #{id}
+    </delete>
+    
+    <update id="update">
+    	update problem set admin_id = #{adminId},answer = #{answer},is_finish = #{isFinish} 
+    	where id = #{id}
+    </update>
 </mapper>

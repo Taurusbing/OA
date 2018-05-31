@@ -8,30 +8,34 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.hpeu.oa.dao.ProblemDao;
-import com.hpeu.oa.entity.Problem;
+import com.hpeu.oa.dao.ScoreDao;
+import com.hpeu.oa.entity.Score;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:spring-mybatis.xml")
-public class ProblemTest {
+public class ScoreTest {
 	@Autowired
-	private ProblemDao problemDao;
+	private ScoreDao ScoreDao;
 	
 	@Test
 	public void getAll() {
-		List<Problem> list = problemDao.getAll();
-		for(Problem li : list) {
+		List<Score> list = ScoreDao.getAll();
+		for(Score li : list) {
 			System.out.println(li);
 		}
 	}
 	
 	@Test
 	public void getOne() {
-		Problem problem = problemDao.getOne(1);
-		problem.setAnswer("答案");
-		problem.setAdmin_id(1);
-		problem.setIs_finish(1);
-		problemDao.update(problem);
-		System.out.println("1");
+		Score score = ScoreDao.select(1);
+		System.out.println(score);
+	}
+	
+	@Test
+	public void update() {
+		Score score = ScoreDao.select(1);
+		score.setOne(50.0f);
+		ScoreDao.update(score);
+		System.out.println("修改成功");
 	}
 }
