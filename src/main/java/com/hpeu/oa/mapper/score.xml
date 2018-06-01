@@ -22,6 +22,10 @@
     	select sid as id,one,two,three from score where sid = #{id}
     </select>
     
+    <select id = "getCount" resultType="int">
+    	select count(sid) from score
+    </select>
+    
     <update id="update">
     	update score set one = #{one} , two = #{two} , three = #{three} 
     	where sid = #{id}

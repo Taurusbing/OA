@@ -48,13 +48,11 @@
                
           
 <script src="../layui/layui.js" charset="utf-8"></script>
-<!-- 注意：如果你直接复制所有代码到本地，上述js路径需要改成你本地的 -->
 <script>
 layui.use('table', function(){
   var table = layui.table;
   //监听表格复选框选择
   table.on('checkbox(demo)', function(obj){
-    console.log(obj)
   });
   //监听工具条
   table.on('tool(demo)', function(obj){

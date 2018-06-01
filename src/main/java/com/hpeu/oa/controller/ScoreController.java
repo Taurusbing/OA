@@ -4,6 +4,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -35,12 +38,19 @@ public class ScoreController {
 	 */
 	@RequestMapping(value="showScore",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String getAll() {
+	public String getAll(HttpServletRequest request) {
+		int page = Integer.parseInt(request.getParameter("page"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
+		
 		Map<String, Object> map = new HashMap<>();
-		List<Score> list = scoreServiceImpl.getAll();
+		//分页查询
+		List<Score> list = scoreServiceImpl.getAll(new RowBounds((page - 1)*limit,limit));
+		//获取总数
+		int count = scoreServiceImpl.getCount();
+		
 		map.put("code", 0);
  		map.put("msg", "");
- 		map.put("count", list.size());
+ 		map.put("count", count);
 		map.put("data", list);
 		JSONObject jsonObject = JSONObject.fromObject(map);
 		System.out.println(jsonObject.toString());

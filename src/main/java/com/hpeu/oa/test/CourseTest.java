@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,7 +53,7 @@ public class CourseTest {
 	
 	@Test
 	public void getAll() {
-		List<Course> list = courseDao.getAll();
+		List<Course> list = courseDao.getAll(new RowBounds(5, 5));
 /*		System.out.println(list);
 		for(Course li : list) {
 			System.out.println(li);
@@ -67,5 +68,11 @@ public class CourseTest {
 	public void delete() {
 		courseDao.delete(4);
 		System.out.println("删除");
+	}
+	
+	
+	@Test 
+	public void getCount() {
+		System.out.println(courseDao.getCount());
 	}
 }

@@ -2,6 +2,8 @@ package com.hpeu.oa.dao;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
+
 import com.hpeu.oa.entity.Score;
 
 public interface ScoreDao extends BaseDao1<Score>{
@@ -19,4 +21,10 @@ public interface ScoreDao extends BaseDao1<Score>{
 
 	// 查询所有
 	List<Score> getAll();
+	
+	//分页查询
+	List<Score> getAll(RowBounds rowBounds);
+	
+	//获取总数
+	int getCount();
 }

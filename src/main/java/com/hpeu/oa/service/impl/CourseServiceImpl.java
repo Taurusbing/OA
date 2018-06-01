@@ -2,6 +2,7 @@ package com.hpeu.oa.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -36,13 +37,24 @@ public class CourseServiceImpl implements CourseService{
 	}
 
 	@Override
-	public List<Course> getAll() {
-		return CourseDao.getAll();
+	public List<Course> getAll(RowBounds rowBounds) {
+		return CourseDao.getAll(rowBounds);
 	}
 
 	@Override
 	public int findId(String name) {
 		return CourseDao.findOne(name).getId();
+	}
+
+	@Override
+	public List<Course> getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCount() {
+		return CourseDao.getCount();
 	}
 
 }

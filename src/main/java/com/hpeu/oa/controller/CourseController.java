@@ -16,6 +16,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.io.FilenameUtils;
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -121,13 +122,18 @@ public class CourseController {
      */
 	@RequestMapping(value="/show",method=RequestMethod.POST,produces = "application/json;charset=utf-8")
 	@ResponseBody
-	public String show() {
+	public String show(HttpServletRequest request) {
+		int page = Integer.parseInt(request.getParameter("page"));
+		int limit = Integer.parseInt(request.getParameter("limit"));
 		Map<String, Object> map = new HashMap<>();
-		List<Course> list = courseService.getAll();
-
+		//分页查询
+		List<Course> list = courseService.getAll(new RowBounds((page -1)*limit, limit));
+		//获取总数
+		int count = courseService.getCount();
+		
  		map.put("code", 0);
  		map.put("msg", "");
- 		map.put("count", list.size());
+ 		map.put("count", count);
 		map.put("data", list);
 		JSONObject jsonObject = JSONObject.fromObject(map);
 		System.out.println(jsonObject.toString());

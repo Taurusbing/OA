@@ -29,8 +29,13 @@
 		   resource r
 		WHERE
 		   c.admin_id = a.id
-		AND c.id = r.course_id
+		AND c.id = r.course_id 
     </select>
+    
+    <select id="getCount" resultType="int">
+    	select count(id) as count from course
+    </select>
+    
     <delete id="delete">
     	delete from course where id=#{id}
     </delete>

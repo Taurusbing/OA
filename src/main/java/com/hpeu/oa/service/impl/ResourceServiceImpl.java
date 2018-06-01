@@ -2,6 +2,7 @@ package com.hpeu.oa.service.impl;
 
 import java.util.List;
 
+import org.apache.ibatis.session.RowBounds;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -32,6 +33,18 @@ public class ResourceServiceImpl implements ResourceService{
 
 	public List<Resoure> getAll() {
 		return null;
+	}
+
+	@Override
+	public List<Resoure> getAll(RowBounds rowBounds) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public int getCount() {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 
 }
