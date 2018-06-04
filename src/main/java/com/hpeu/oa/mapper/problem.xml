@@ -13,7 +13,7 @@
 		   p.is_finish as isFinish,
 		   p.answer,
 		   s.sname studentName,
-		   a.adminName
+		   a.admin_name as adminName
 		FROM
 		   problem p,
 		   student s,
@@ -34,7 +34,7 @@
 		   p.is_finish as isFinish,
 		   p.answer,
 		   s.sname studentName,
-		   a.adminName
+		   a.admin_name as adminName
 		FROM
 		   problem p,
 		   student s,

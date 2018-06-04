@@ -37,7 +37,7 @@ import com.hpeu.oa.service.ResourceService;
 
 import net.sf.json.JSONObject;
 
-@RequestMapping("course")  
+@RequestMapping("assistant")  
 @Controller  
 public class CourseController {
 	@Autowired
@@ -49,17 +49,26 @@ public class CourseController {
 	/**
 	 *跳转到home.jsp主页面
 	 */
+	@RequestMapping(value="main",method=RequestMethod.GET)
+	public String goMain() {
+		return "assistant/main";
+	}
+	
+	/**
+	 *跳转到home.jsp主页面
+	 */
 	@RequestMapping(value="home",method=RequestMethod.GET)
 	public String goHome() {
-		return "home";
+		return "assistant/home";
 	}
+	
 	
 	/**
 	 *跳转到课程推送页面
 	 */
 	@RequestMapping(value="add",method=RequestMethod.GET)
 	public String goAdd() {
-		return "courseAdd";
+		return "assistant/courseAdd";
 	}
 	
 	
@@ -68,7 +77,7 @@ public class CourseController {
 	 */
 	@RequestMapping(value="showdata",method=RequestMethod.GET)
 	public String goData() {
-		return "showdata";
+		return "assistant/showdata";
 	}
 	
 	
@@ -87,11 +96,12 @@ public class CourseController {
     /**
      * 课程上传功能
      */
-    @RequestMapping(value="/putCourse",method=RequestMethod.POST)
-    @ResponseBody
-    public void course(Course course,HttpServletRequest request,HttpServletResponse response){  
+    @RequestMapping(value="/putCourse",method=RequestMethod.GET)
+    public String courseadd(Course course,HttpServletRequest request){ 
     	//获取session中存储的文件名
     	String filename = (String) request.getSession().getAttribute("sefile");
+    	//取出session里的东西后，将session清空
+    	request.getSession().setAttribute("sefile", null);
     	
 	    //推送时间
 		Date date = new Date();
@@ -113,8 +123,10 @@ public class CourseController {
     	ResourceService.add(resoure);
     	
     	System.out.println("推送成功");
-
+    	return "redirect:/assistant/showdata";
     }
+    
+    
     
     /**
      * 将课程列表传给前台展示
@@ -139,6 +151,8 @@ public class CourseController {
 		System.out.println(jsonObject.toString());
 		return jsonObject.toString();
 	}
+	
+	
 	
 	/**
 	 * 删除课程

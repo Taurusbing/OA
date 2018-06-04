@@ -18,10 +18,10 @@
     <select id="getAll" resultType="com.hpeu.oa.entity.Cou">
 		SELECT
 		   c.id,
-		   c.courseName,
+		   c.course_name,
 		   c.coment,
-		   c.putDate,
-		   a.adminName,
+		   c.put_date as putDate,
+		   a.admin_name as adminName,
 		   r.resourceName
 		FROM
 		   course c,

@@ -19,7 +19,7 @@ import com.hpeu.oa.service.impl.ScoreServiceImpl;
 
 import net.sf.json.JSONObject;
 
-@RequestMapping("course")
+@RequestMapping("assistant")
 @Controller 
 public class ScoreController {
 	@Autowired
@@ -30,7 +30,7 @@ public class ScoreController {
 	 */
 	@RequestMapping(value="score",method=RequestMethod.GET)
 	public ModelAndView goScore() {
-		return new ModelAndView("score");
+		return new ModelAndView("assistant/score");
 	}
 	
 	/**

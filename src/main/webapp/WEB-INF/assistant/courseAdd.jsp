@@ -15,7 +15,7 @@
 </head>
 
 <body>
-	<form class="layui-form layui-form-pane ">
+	<form action="putCourse" method="get" class="layui-form layui-form-pane ">
 		<fieldset class="layui-elem-field layui-field-title"
 			style="margin-top: 30px;">
 			<legend>课程推送</legend>
@@ -63,19 +63,11 @@
 			});
 		});
 		$("#btn").click(function() {
-			var json = {
-				adminId : $("#adminId").val(),
-				courseName : $("#courseName").val(),
-				coment : $("#coment").val()
-			}
-				
-			$.post("putCourse",json,function(ddd){
-				layer.msg('课程发布成功', {time: 5000, icon:6});
-			})
+			$("form").submit();
 		})
-/* 		$("form").submit(function(e) {
+ 		$("form").submit(function(e) {
 			return true;
-		}) */
+		}) 
 	</script>
 </body>
 

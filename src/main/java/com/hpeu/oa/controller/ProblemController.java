@@ -15,7 +15,7 @@ import com.hpeu.oa.service.ProblemService;
 
 import net.sf.json.JSONObject;
 
-@RequestMapping("course")
+@RequestMapping("assistant")
 @Controller
 public class ProblemController {
 	@Autowired
@@ -28,7 +28,7 @@ public class ProblemController {
 	 */
 	@RequestMapping(value="/showpro",method=RequestMethod.GET)
 	public String goData() {
-		return "showpro";
+		return "assistant/showpro";
 	}
 	
 	/**
@@ -63,7 +63,8 @@ public class ProblemController {
 		problem.setAdmin_id(1);
 		problem.setIs_finish(1);
 		problemService.update(problem);
-		return "showpro";
+		//修改完后跳转回问题显示
+		return "assistant/showpro";
 	}
 	
 	/**

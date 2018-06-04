@@ -24,7 +24,7 @@
     <!-- 对模型视图名称的解析,在请求时模型视图名称添加前后缀 -->
     <bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
         <property name="viewClass" value="org.springframework.web.servlet.view.JstlView"/>
-        <property name="prefix" value="/WEB-INF/course/"/>      <!-- 配置视图解析前缀 -->
+        <property name="prefix" value="/WEB-INF/"/>      <!-- 配置视图解析前缀 -->
         <property name="suffix" value=".jsp"/>   <!-- 配置视图解析后缀 -->
     </bean>
 
