@@ -4,6 +4,12 @@
 
 <mapper namespace="com.hpeu.oa.dao.ResouceDao">
     <insert id="add">
-    	insert into resource(resourceName,url,course_id) values(#{name},#{url},#{courseId})
+    	insert into resource(resource_name,url,course_id) values(#{name},#{url},#{courseId})
     </insert>
+    <select id="findAll" resultType="com.hpeu.oa.entity.ResourceVO">
+    	select id,resource_name as filename from resource where url is not null
+    </select>
+    <select id = "getCount" resultType="int">
+    	select count(id) from resource where url is not null
+    </select>
 </mapper>

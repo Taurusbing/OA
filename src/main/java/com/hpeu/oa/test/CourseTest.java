@@ -44,6 +44,11 @@ public class CourseTest {
 		System.out.println("添加成功");
 	}
 	
+	@Test 
+	public void findOne() {
+		Cou course = courseDao.findOne("43333333");
+		System.out.println(course);
+	}
 	
 	@Test 
 	public void findTime() {
@@ -53,7 +58,7 @@ public class CourseTest {
 	
 	@Test
 	public void getAll() {
-		List<Course> list = courseDao.getAll(new RowBounds(5, 5));
+		List<Course> list = courseDao.getAll(new RowBounds(10, 5));
 /*		System.out.println(list);
 		for(Course li : list) {
 			System.out.println(li);

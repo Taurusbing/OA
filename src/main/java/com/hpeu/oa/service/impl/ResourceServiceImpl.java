@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.hpeu.oa.dao.ResouceDao;
+import com.hpeu.oa.entity.ResourceVO;
 import com.hpeu.oa.entity.Resoure;
 import com.hpeu.oa.service.ResourceService;
 @Service
@@ -43,8 +44,13 @@ public class ResourceServiceImpl implements ResourceService{
 
 	@Override
 	public int getCount() {
-		// TODO Auto-generated method stub
-		return 0;
+		return resouceDao.getCount();
 	}
+
+	@Override
+	public List<ResourceVO> findAll(RowBounds rowBounds) {
+		return resouceDao.findAll();
+	}
+
 
 }

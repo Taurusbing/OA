@@ -40,7 +40,7 @@ public class Course {
 	}
 	@Override
 	public String toString() {
-		return "CourseVO [id=" + id + ", adminId=" + adminId + ", courseName=" + courseName + ", coment=" + coment
+		return "Course [id=" + id + ", adminId=" + adminId + ", courseName=" + courseName + ", coment=" + coment
 				+ ", putDate=" + putDate + "]";
 	}
 	

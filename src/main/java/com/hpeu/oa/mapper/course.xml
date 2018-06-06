@@ -4,11 +4,11 @@
 
 <mapper namespace="com.hpeu.oa.dao.CourseDao">
     <insert id="add">
-    	insert into course(admin_id,courseName,coment,putDate) values(#{adminId},#{courseName},#{coment},#{putDate})
+    	insert into course(admin_id,course_name,coment,put_date) values(#{adminId},#{courseName},#{coment},#{putDate})
     </insert>
     
-    <select id="findOne" resultType="com.hpeu.oa.entity.Course">
-    	select id,courseName from course where courseName = #{courseName}
+    <select id="findOne" resultType="com.hpeu.oa.entity.Cou">
+    	select id,course_name as courseName from course where course_name = #{courseName}
     </select>
     
     <select id="findTime" resultType="java.sql.Timestamp">
@@ -18,11 +18,11 @@
     <select id="getAll" resultType="com.hpeu.oa.entity.Cou">
 		SELECT
 		   c.id,
-		   c.course_name,
+		   c.course_name as courseName,
 		   c.coment,
 		   c.put_date as putDate,
 		   a.admin_name as adminName,
-		   r.resourceName
+		   r.resource_name as resourceName
 		FROM
 		   course c,
 		   admin a,

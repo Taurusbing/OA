@@ -47,7 +47,7 @@ public class CourseController {
 	private CourseService courseService;
 	
 	/**
-	 *跳转到home.jsp主页面
+	 *跳转到main.jsp主页面
 	 */
 	@RequestMapping(value="main",method=RequestMethod.GET)
 	public String goMain() {
@@ -87,8 +87,10 @@ public class CourseController {
     @RequestMapping(value="/upload",method=RequestMethod.POST)  
     @ResponseBody  
     public void upload(MultipartFile file,HttpServletRequest request,HttpServletResponse response) throws IOException{  
-    	request.getSession().setAttribute("sefile", file.getOriginalFilename());
-    	file.transferTo(new File("D:\\upload\\"+file.getOriginalFilename()));
+    	if(file != null) {
+    		request.getSession().setAttribute("sefile", file.getOriginalFilename());
+    		file.transferTo(new File("D:\\upload\\"+file.getOriginalFilename()));
+    	}
     }  
     
     
@@ -116,11 +118,19 @@ public class CourseController {
         int courseId = courseService.findId(course.getCourseName());
 		
         //将文件资源，地址存入到resource表中
-    	Resoure resoure = new Resoure();
-    	resoure.setName(filename);
-    	resoure.setUrl("D:\\upload\\"+filename);
-    	resoure.setCourseId(courseId);
-    	ResourceService.add(resoure);
+        if(filename != null) {
+        	Resoure resoure = new Resoure();
+        	resoure.setName(filename);
+        	resoure.setUrl("D:\\upload\\"+filename);
+        	resoure.setCourseId(courseId);
+        	ResourceService.add(resoure);
+        }else {
+        	Resoure resoure = new Resoure();
+        	resoure.setName("无文件");
+        	resoure.setUrl(null);
+        	resoure.setCourseId(courseId);
+        	ResourceService.add(resoure);
+        }
     	
     	System.out.println("推送成功");
     	return "redirect:/assistant/showdata";

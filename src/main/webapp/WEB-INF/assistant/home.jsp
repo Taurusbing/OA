@@ -72,6 +72,11 @@
 									data-title="学生成绩" kit-target data-id='5'"><i
 									class="layui-icon">&#xe658;</i><span> 学生成绩</span></a>
 							</dd>
+							<dd>
+								<a href="javascript:;" data-url="showfile" data-icon="&#xe614;"
+									data-title="资源管理" kit-target data-id='6'"><i
+									class="layui-icon">&#xe658;</i><span> 资源管理</span></a>
+							</dd>
 						</dl></li>
 					<li class="layui-nav-item layui-nav-itemed"><a
 						href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span>

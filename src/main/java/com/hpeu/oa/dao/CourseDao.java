@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.apache.ibatis.session.RowBounds;
 
+import com.hpeu.oa.entity.Cou;
 import com.hpeu.oa.entity.Course;
 
 
@@ -12,7 +13,7 @@ public interface CourseDao extends BaseDao1<Course>{
 	//添加
 	void add(Course entity);
 	//查询单个
-	Course findOne(String name);
+	Cou findOne(String name);
 	
 	Timestamp findTime(String name);
 	//查询所有
