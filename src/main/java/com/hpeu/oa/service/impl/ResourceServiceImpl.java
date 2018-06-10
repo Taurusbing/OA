@@ -21,7 +21,7 @@ public class ResourceServiceImpl implements ResourceService{
 	}
 
 	public void delete(int id) {
-		
+		resouceDao.delete(id);
 	}
 
 	public void update(Resoure entity) {
@@ -50,6 +50,11 @@ public class ResourceServiceImpl implements ResourceService{
 	@Override
 	public List<ResourceVO> findAll(RowBounds rowBounds) {
 		return resouceDao.findAll();
+	}
+
+	@Override
+	public void delCourse(int cid) {
+		resouceDao.delCourse(cid);
 	}
 
 

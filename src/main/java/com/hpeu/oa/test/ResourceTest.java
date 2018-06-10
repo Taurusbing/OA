@@ -34,4 +34,9 @@ public class ResourceTest {
 			System.out.println(li);
 		}
 	}
+	
+	@Test
+	public void delCourse() {
+		resouceDao.delCourse(37);
+	}
 }

@@ -79,4 +79,10 @@ public class FileController {
 			e.printStackTrace();
 		}
 	}
+	
+	@RequestMapping(value="/redel",method=RequestMethod.POST)
+	public void redel(int id) {
+		resourceService.delete(id);
+		System.out.println("删除成功");
+	}
 }

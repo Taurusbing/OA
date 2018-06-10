@@ -12,4 +12,11 @@
     <select id = "getCount" resultType="int">
     	select count(id) from resource where url is not null
     </select>
+    <delete id="delete" parameterType="int">
+    	delete from resource where id = #{id}
+    </delete>
+    <!-- 删除课程文件  -->
+    <delete id="delCourse" parameterType="int">
+    	delete from resource where course_id = #{cid}
+    </delete>
 </mapper>

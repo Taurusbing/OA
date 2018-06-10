@@ -12,4 +12,10 @@ public interface ResouceDao extends BaseDao1<Resoure>{
 	
 	//获取总数
 	int getCount();
+	
+	//删除课程文件
+	void delCourse(int cid);
+	
+	//删除
+	void delete(int id);
 }

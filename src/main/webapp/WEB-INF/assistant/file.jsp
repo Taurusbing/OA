@@ -69,6 +69,9 @@
 						layer.msg('ID：' + data.id + ' 的查看操作');
 					} else if(obj.event === 'del') {
 						layer.confirm('真的删除行么', function(index) {
+							$.post('redel',{"id":data.id},function(d){
+					        	  
+					         })
 							obj.del();
 							layer.close(index);
 						});

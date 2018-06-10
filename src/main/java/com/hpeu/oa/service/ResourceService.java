@@ -9,5 +9,6 @@ import com.hpeu.oa.entity.Resoure;
 
 public interface ResourceService extends BaseService<Resoure>{
 	public List<ResourceVO> findAll(RowBounds rowBounds);
-	
+	//删除课程文件
+	public void delCourse(int cid);
 }

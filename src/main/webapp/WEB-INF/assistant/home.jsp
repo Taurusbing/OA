@@ -23,7 +23,7 @@
 			<div class="layui-logo kit-logo-mobile">K</div>
 			<ul class="layui-nav layui-layout-right kit-nav">
 				<li class="layui-nav-item"><a href="javascript:;" id="pay"><i
-						class="fa fa-gratipay" aria-hidden="true"></i> 捐赠我</a></li>
+						class="fa fa-gratipay" aria-hidden="true"></i></a></li>
 				<li class="layui-nav-item"><a href="javascript:;"> <img
 						src="http://m.zhengjinfan.cn/images/0.jpg" class="layui-nav-img">
 						Van
@@ -78,44 +78,9 @@
 									class="layui-icon">&#xe658;</i><span> 资源管理</span></a>
 							</dd>
 						</dl></li>
-					<li class="layui-nav-item layui-nav-itemed"><a
-						href="javascript:;"><i class="fa fa-plug" aria-hidden="true"></i><span>
-								组件</span></a>
-						<dl class="layui-nav-child">
-							<dd>
-								<a href="javascript:;" kit-target
-									data-options="{url:'navbar.html',icon:'&#xe658;',title:'Navbar',id:'6'}"><i
-									class="layui-icon">&#xe658;</i><span> Navbar</span></a>
-							</dd>
-							<dd>
-								<a href="javascript:;" kit-target
-									data-options="{url:'tab.html',icon:'&#xe658;',title:'TAB',id:'7'}"><i
-									class="layui-icon">&#xe658;</i><span> Tab</span></a>
-							</dd>
-							<dd>
-								<a href="javascript:;" kit-target
-									data-options="{url:'onelevel.html',icon:'&#xe658;',title:'OneLevel',id:'50'}"><i
-									class="layui-icon">&#xe658;</i><span> OneLevel</span></a>
-							</dd>
-							<dd>
-								<a href="javascript:;" kit-target
-									data-options="{url:'app.html',icon:'&#xe658;',title:'App',id:'8'}"><i
-									class="layui-icon">&#xe658;</i><span> app.js主入口</span></a>
-							</dd>
-						</dl></li>
-					<li class="layui-nav-item"><a href="javascript:;"
-						data-url="/components/table/table.html" data-name="table"
-						kit-loader><i class="fa fa-plug" aria-hidden="true"></i><span>
-								表格(page)</span></a></li>
-					<li class="layui-nav-item"><a href="javascript:;"
-						data-url="/views/form.html" data-name="form" kit-loader><i
-							class="fa fa-plug" aria-hidden="true"></i><span> 表单(page)</span></a>
-					</li>
 				</ul>
 			</div>
 		</div>
-
-
 		<div class="layui-body" id="container">
 			<!-- 内容主体区域 -->
 			<div style="padding: 15px;">主体内容加载中,请稍等...</div>
@@ -125,7 +90,7 @@
 
 		<div class="layui-footer">
 			<!-- 底部固定区域 -->
-			2018 &copy; <a href="http://kit.zhengjinfan.cn/">www.hpeu.com/</a>
+			2018 &copy; <a href="http://kit.zhengjinfan.cn/">骇客联盟开发</a>
 			MIT license
 
 		</div>

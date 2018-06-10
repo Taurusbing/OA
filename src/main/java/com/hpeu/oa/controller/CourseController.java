@@ -47,14 +47,6 @@ public class CourseController {
 	private CourseService courseService;
 	
 	/**
-	 *跳转到main.jsp主页面
-	 */
-	@RequestMapping(value="main",method=RequestMethod.GET)
-	public String goMain() {
-		return "assistant/main";
-	}
-	
-	/**
 	 *跳转到home.jsp主页面
 	 */
 	@RequestMapping(value="home",method=RequestMethod.GET)
@@ -62,6 +54,13 @@ public class CourseController {
 		return "assistant/home";
 	}
 	
+	/**
+	 *跳转到main.jsp主页面，显示控制面板页面
+	 */
+	@RequestMapping(value="main",method=RequestMethod.GET)
+	public String goMain() {
+		return "assistant/main";
+	}
 	
 	/**
 	 *跳转到课程推送页面
@@ -100,6 +99,10 @@ public class CourseController {
      */
     @RequestMapping(value="/putCourse",method=RequestMethod.GET)
     public String courseadd(Course course,HttpServletRequest request){ 
+    	//从session中获取用户的id,需要时打开
+//    	int adminId = (int) request.getSession().getAttribute("");
+//    	course.setAdminId(adminId);
+    	
     	//获取session中存储的文件名
     	String filename = (String) request.getSession().getAttribute("sefile");
     	//取出session里的东西后，将session清空
@@ -118,14 +121,13 @@ public class CourseController {
         int courseId = courseService.findId(course.getCourseName());
 		
         //将文件资源，地址存入到resource表中
+        Resoure resoure = new Resoure();
         if(filename != null) {
-        	Resoure resoure = new Resoure();
         	resoure.setName(filename);
         	resoure.setUrl("D:\\upload\\"+filename);
         	resoure.setCourseId(courseId);
         	ResourceService.add(resoure);
         }else {
-        	Resoure resoure = new Resoure();
         	resoure.setName("无文件");
         	resoure.setUrl(null);
         	resoure.setCourseId(courseId);
@@ -170,6 +172,7 @@ public class CourseController {
 	@RequestMapping(value="/coursedel",method=RequestMethod.POST)
 	public void delete(int cid) {
 		courseService.delete(cid);
+		ResourceService.delCourse(cid);
 		System.out.println("删除成功");
 	}
 }

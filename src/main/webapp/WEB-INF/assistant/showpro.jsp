@@ -102,7 +102,7 @@
   		{{#  } }} 
 		{{#  if(d.is_finish=== 0){ }}
     		<b style="color:red">未解答</b>
-  		{{#  } }} 
+  		{{#  } }}
 	</script>
 	
 	<script type="text/html" id="barDemo">

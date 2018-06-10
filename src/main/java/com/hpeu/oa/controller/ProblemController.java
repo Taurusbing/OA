@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -56,9 +58,12 @@ public class ProblemController {
 	 * 解答问题功能
 	 */
 	@RequestMapping(value="/write",method=RequestMethod.GET)
-	public String write(int proId,String content) {
+	public String write(int proId,String content,HttpSession session) {
 		Problem problem = problemService.select(proId);
 		problem.setAnswer(content);
+		//从session中获取用户id，需要时打开
+//		int adminId =  (int)session.getAttribute("");
+//		problem.setAdmin_id(adminId);
 		//传入助教admin的id
 		problem.setAdmin_id(1);
 		problem.setIs_finish(1);
